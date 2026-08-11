@@ -10,6 +10,7 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
@@ -18,9 +19,14 @@ class MyApp extends StatelessWidget {
       title: 'First Try',
 
       theme: ThemeData(
-        colorScheme: .fromSeed(seedColor: Colors.orange),
+        colorScheme: .fromSeed(seedColor: Colors.deepPurple),
       ),
-      home: Loginscreen(), // cause there is no parameter like home page
+
+      //
+
+      // the first page that will be shown
+      home: Loginscreen(), // cause there is no parameter like home page , i write bc
+      // home page needed a parameter
     );
   }
 }

@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:iti_flutter/Core/Images/images_path.dart';
+import 'package:iti_flutter/Presentation/Screens/MenuScreen_Carousel.dart';
+import 'package:iti_flutter/Presentation/Screens/OrderProgress.dart';
 import 'package:iti_flutter/Presentation/Screens/PaymentScreen.dart';
 import 'package:iti_flutter/Presentation/Screens/ProfileScreen.dart';
 import 'package:iti_flutter/Presentation/Widgets/HomeCards.dart';
+import 'package:sidebarx/sidebarx.dart';
+import 'package:iti_flutter/Presentation/Screens/Bottomnavbar.dart';
+import 'package:share_plus/share_plus.dart';
+
 
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
 
-
   final String title;
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
+  bool BottombarIsOpen = false ;
   int _counter = 0;
 
 
@@ -29,11 +34,142 @@ class _MyHomePageState extends State<MyHomePage> {
   // leading: Icon(Icons.notifications_none , color: Colors.white , size: 30,  ) ----->
   @override
   Widget build(BuildContext context) {
+
+    // must put it in before the app bar in mobile screens but in
+    // big screens we put it in the body specific in scaffold
     return Scaffold(
+      // must be put in scaffold
+        drawer:
+        // very important to use Drawer class in this case to use its properities
+          Drawer(
+              width: 250,
+                  child: Column(
+                       mainAxisAlignment: MainAxisAlignment.start,
+                       crossAxisAlignment: CrossAxisAlignment.start,
+                       children:[
+                         Padding(
+                             padding: EdgeInsets.only(top: 50, bottom: 20 ,left: 10 ),
+                           child: Text("Menu" , style : TextStyle(color: Colors.black , fontSize: 25 , fontWeight: FontWeight.bold), )
+                       ),
+                         // Expanded ----> take the rest space in the drawer
+                         Expanded(
+                           // take width of the drawer
+                           child: SizedBox(
+                             width: 250,
+                             child: SidebarX(
+                               // extended (true)-----> makes the drawer labels appear
+                               // // (false ) ---> makes the drawer labels disappear
+                               // and make the icons as a column
+                               //SidebarXController(selectedIndex: 0, extended: false) ---->
+                               //selectedIndex: 0 ----> the item that is been selected first time
+                               //opening the drawer
+                               // dont have width || color
+                               controller: SidebarXController(selectedIndex: 0, extended: true),
+                               // to modify labels
+                               theme: SidebarXTheme(
+                                 textStyle: TextStyle(
+                                   fontSize: 20,
+                                   fontWeight: FontWeight.bold,
+                                 ),
+                                 // to make the icons in the left when extend is false
+                                 itemPadding: const EdgeInsets.only(
+                                   right: 150,
+                                 ),
+                               ),
+                               items: [
+                                  SidebarXItem(icon: Icons.home, label: 'Home'),
+                                 // no const (specific in ontap || navigator) ?? ---->
+                                 SidebarXItem(
+                                   icon: Icons.person,
+                                   label: 'Profile',
+                                   onTap: () {
+                                     Navigator.push(
+                                       context,
+                                       MaterialPageRoute(
+                                         builder: (context) => Profilescreen(),
+                                       ),
+                                     );
+                                   },),
+                                 SidebarXItem(icon: Icons.menu_book,
+                                   label: 'Menu',
+                                   onTap: () {
+                                     Navigator.push(
+                                       context,
+                                       MaterialPageRoute(
+                                         builder: (context) => MenuscreenCarousel(),
+                                       ),
+                                     );
+                                   },),
+                                 SidebarXItem(icon: Icons.speed,
+                                   label: 'Order Progress',
+                                   onTap: () {
+                                     Navigator.push(
+                                       context,
+                                       MaterialPageRoute(
+                                         builder: (context) => orderprogress(),
+                                       ),
+                                     );
+                                   },),
+                                 SidebarXItem(icon: Icons.navigation_sharp,
+                                   label: 'Bottom Bar',
+                                  // onTap: () async {
+                                  //   if (BottombarIsOpen) {
+                                  //     Navigator.pop(context);
+                                  //     BottombarIsOpen = false;
+                                  //   } else {
+                                  //     BottombarIsOpen = true;
+                                  //     await Navigator.push(
+                                  //       context,
+                                  //       MaterialPageRoute(
+                                  //         builder: (context) => BottomNavBar(),
+                                  //       ),
+                                  //     );
+                                  //     BottombarIsOpen = false;
+                                  //   }
+                                  // },
+                                     // dont click it more than one time
+                                     // i want to know the reason of this problem?????
+                                   onTap: (){
+                                     Navigator.push(
+                                       context,
+                                       MaterialPageRoute(
+                                         builder: (context) => BottomNavBar(),
+                                       ),
+                                     );
+                                   }
+                                     ),
+                               ],
+                             ),
+                           ),
+                         ),
+                      ],
+                            ),
+             ),
+
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
         title: Text("Food App" , style: TextStyle(color: Colors.white , fontSize: 25 , fontWeight: FontWeight.bold), ) ,
         centerTitle: false,
+        // make all the appbar icons white
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
+        // if want to control only the drawer icon
+        //leading: Builder(
+        //   builder: (context) {
+        //     return IconButton(
+        //       icon: Icon(
+        //         Icons.menu,
+        //         color: Colors.white,
+        //       ),
+        //       onPressed: () {
+        //         Scaffold.of(context).openDrawer();
+        //       },
+        //     );
+        //   },
+        // ),
+
+
         // the thing i want to move it wrap it with positioned not all the parent
         actions:[
           Stack(
@@ -57,12 +193,38 @@ class _MyHomePageState extends State<MyHomePage> {
               )
             ],
           ),
-          SizedBox(width: 10) ,
+         //SizedBox(width: 10) ,
 
-          IconButton(onPressed: (){
-            Navigator.push(context, MaterialPageRoute(builder: (context) => Profilescreen()));
-          } , icon: Icon(Icons.person_rounded , color: Colors.white , size: 30,  ) ,),
+         //IconButton(onPressed: (){
+         //  Navigator.push(context, MaterialPageRoute(builder: (context) => Profilescreen()));
+         //} , icon: Icon(Icons.person_rounded , color: Colors.white , size: 30,  ) ,),
 
+         //SizedBox(width: 10) ,
+
+         //IconButton(onPressed: (){
+         //  Navigator.push(context, MaterialPageRoute(builder: (context) => MenuscreenCarousel()));
+         //} , icon: Icon(Icons.menu_book , color: Colors.white , size: 30,  ) ,),
+          // this is for text there is a one for files
+          //import 'package:share_plus/share_plus.dart';
+          // import 'package:cross_file/cross_file.dart';
+          // final params = ShareParams( text: 'Great picture',
+          // files: [XFile('${directory.path}/image.jpg')], );
+          // final result = await SharePlus.instance.share(params);
+          // if (result.status == ShareResultStatus.success)
+          // { print('Thank you for sharing the picture!');
+          // still i want to study it
+          IconButton(onPressed: () async {
+            {
+              final result = await SharePlus.instance.share(
+                ShareParams(
+                  text: 'Check out my Food App!',
+                ),
+              );
+              if (result.status == ShareResultStatus.success) {
+                print('Shared successfully!');
+              }
+            } ;
+          } , icon: Icon(Icons.share , color: Colors.white , size: 30,  ) ,),
 
         ],
 

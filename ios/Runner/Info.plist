@@ -6,6 +6,12 @@
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
+	<key>NSMicrophoneUsageDescription</key>
+    <string>This app needs access to your microphone to let you make voice records</string>
+	<key>NSCameraUsageDescription</key>
+    <string>his app needs access to your Camera to let you take a photo for profile</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+    <string>This app needs access to your photos to let you choose a profile picture</string>
 	<key>CFBundleDisplayName</key>
 	<string>Iti Flutter</string>
 	<key>CFBundleExecutable</key>
