@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iti_flutter/Core/Images/images_path.dart';
+import 'package:iti_flutter/Data/Requests/Popular_Chefs_Request.dart';
+import 'package:iti_flutter/Presentation/Cubits/popular_chefs_cubit.dart';
 import 'package:iti_flutter/Presentation/Screens/MenuScreen_Carousel.dart';
 import 'package:iti_flutter/Presentation/Screens/OrderProgress.dart';
 import 'package:iti_flutter/Presentation/Screens/PaymentScreen.dart';
+import 'package:iti_flutter/Presentation/Screens/Popular_Chefs_Screen.dart';
 import 'package:iti_flutter/Presentation/Screens/ProfileScreen.dart';
 import 'package:iti_flutter/Presentation/Widgets/HomeCards.dart';
 import 'package:sidebarx/sidebarx.dart';
@@ -20,9 +24,6 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  bool BottombarIsOpen = false ;
-  int _counter = 0;
-
 
   // void _incrementCounter() {
   //   setState(() {
@@ -138,6 +139,20 @@ class _MyHomePageState extends State<MyHomePage> {
                                      );
                                    }
                                      ),
+                                 SidebarXItem(icon: Icons.bookmark, label: 'Popular Chefs',
+                                   onTap: () {
+                                     Navigator.push(
+                                       context,
+                                       MaterialPageRoute(
+                                         //builder: (context) => Popular_Chefs_Model(), before blocprovider
+                                         builder: (context) => BlocProvider(
+                                         create: (context) => PopularChefsCubit(),
+                                         child: Popular_Chefs_Model(),
+                                       ),
+                                       ),
+                                     );
+                                   },
+                                 ),
                                ],
                              ),
                            ),
@@ -233,6 +248,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
       body:
       // i will try margin later ??
+      // this stack for the cart and checkout button card
       Stack(
         children: [
           SingleChildScrollView(

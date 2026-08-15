@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:iti_flutter/Data/Requests/Popular_Chefs_Request.dart';
 import 'package:iti_flutter/Presentation/Screens/HomeScreen.dart';
 import 'package:iti_flutter/Presentation/Screens/RegisterScreen.dart';
 import 'package:iti_flutter/Presentation/Widgets/LoginCards.dart';
@@ -19,9 +20,25 @@ class Loginscreen extends StatefulWidget {
 class _LoginscreenState extends State<Loginscreen> {
   GlobalKey<FormState>  formkey = GlobalKey<FormState>() ;
   bool isVisible =false ;
+
+  // i put here not in the home bc this is the first screen that the user sees
+  // i mean that i put it in main to be like this
+  // if didnt call the get popular chefs in the init state
+  // the print wont work and wont test it
+ //@override
+ //void initState() {
+ //  super.initState();
+ //  PopularChefsRequest.getPopularChefs();
+ //}
+
+ //void getChefs() async {
+ //  popularChefsModel =
+ //  await PopularChefsRequest.getPopularChefs();
+
+ //  setState(() {});
+ //}
+
   @override
-
-
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
