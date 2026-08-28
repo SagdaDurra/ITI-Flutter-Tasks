@@ -23,6 +23,7 @@ class Registerscreen extends StatefulWidget {
 class _RegisterscreenState extends State<Registerscreen> {
   GlobalKey<FormState>  formkey = GlobalKey<FormState>() ;
   TextEditingController ? CheckPassController = TextEditingController() ;
+  TextEditingController ? nameController = TextEditingController() ;
   bool issVisible =false ;
   bool isvisible =false ;
 
@@ -48,6 +49,7 @@ class _RegisterscreenState extends State<Registerscreen> {
               Padding(
                 padding: const EdgeInsets.only(left :8.0 , right :8.0),
                 child: TextFormField(
+                  controller: nameController ,
                   validator: (input){
                     if(input==""){
                       return "Name is required";
@@ -246,7 +248,7 @@ class _RegisterscreenState extends State<Registerscreen> {
                     if(formkey.currentState!.validate()){
                       // i make it to go to log in to put your registered data in it
                       // but now cant make this feature it needs backend
-                      Navigator.pushReplacement(context,  MaterialPageRoute(builder: (context) => Loginscreen())) ;
+                      Navigator.pushReplacement(context,  MaterialPageRoute(builder: (context) => Loginscreen( name: nameController!.text,))) ;
                     }
                   },
                 ),

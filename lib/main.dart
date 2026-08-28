@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:iti_flutter/Presentation/Screens/HomeScreen.dart';
-import 'package:iti_flutter/Presentation/Screens/LoginScreen.dart';
-import 'package:iti_flutter/main.dart';
+import 'package:iti_flutter/Presentation/Screens/Authentication/LoginScreen.dart';
+import 'package:iti_flutter/Presentation/Screens/Home/HomeScreen.dart';
+import 'package:iti_flutter/Presentation/Screens/Splash%20Screen/SplashScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,7 +25,7 @@ class MyApp extends StatelessWidget {
       //
 
       // the first page that will be shown
-      home: Loginscreen(), // cause there is no parameter like home page , i write bc
+      home: SplashScreen(), // cause there is no parameter like home page , i write bc
       // home page needed a parameter
     );
   }

@@ -6,10 +6,12 @@ import 'package:iti_flutter/Core/AppAPIs/AllAPIs.dart';
 import 'package:iti_flutter/Domain/Models/Popular-Chefs-Details-Model.dart';
 
 class Popularchefsdetailsrequest {
+  // this id is not for details model its for the popular chefs model and we pass
+  // it here to make this request bring the id (s) bio
 
   static Future<PopularChefsDetails> getPopularChefsDetails(num id) async{
     Map<String , String>? headers = {};
-    var response = await http.get(Uri.parse(Allapis.getPopularChefsDetails),
+    var response = await http.get(Uri.parse('${Allapis.getPopularChefsDetails}/$id?api_key=2dfe23358236069710a379edd4c65a6b'),
         headers: headers ,
     ) ;
     if(response.statusCode == 200){

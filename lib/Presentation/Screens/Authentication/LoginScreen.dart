@@ -13,6 +13,11 @@ import 'package:iti_flutter/Presentation/Widgets/LoginCards.dart';
 // we have the 3 functions here (validate() , reset() , save()) so we can validate the form || reset it || save it
 
 class Loginscreen extends StatefulWidget {
+  final String name;
+  const Loginscreen({
+    super.key,
+    this.name = "",
+  });
   @override
   State<Loginscreen> createState() => _LoginscreenState();
 }
@@ -142,7 +147,7 @@ class _LoginscreenState extends State<Loginscreen> {
                         onPressed: (){
                              if(formkey.currentState!.validate()) {
                              Navigator.pushAndRemoveUntil(context,
-                         MaterialPageRoute(builder: (context) => MyHomePage(title: "done")), (
+                         MaterialPageRoute(builder: (context) => MyHomePage(title: "done" , name: widget.name,)), (
                               route) => false,);
                                   }
                         },

@@ -14,9 +14,10 @@ import 'package:sidebarx/sidebarx.dart';
 import 'package:share_plus/share_plus.dart';
 
 
-
+// this.name = "" why when remove require from ll it give error ????
 class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
+  const MyHomePage({super.key, required this.title , this.name = "",});
+  final String name;
 
   final String title;
   @override
@@ -73,9 +74,10 @@ class _MyHomePageState extends State<MyHomePage> {
                                    fontWeight: FontWeight.bold,
                                  ),
                                  // to make the icons in the left when extend is false
-                                 itemPadding: const EdgeInsets.only(
-                                   right: 150,
-                                 ),
+                                 // but it makes the labels not appear all
+                                 //itemPadding: const EdgeInsets.only(
+                                 //  right: 150,
+                                 //),
                                ),
                                items: [
                                   SidebarXItem(icon: Icons.home, label: 'Home'),
@@ -157,13 +159,14 @@ class _MyHomePageState extends State<MyHomePage> {
                              ),
                            ),
                          ),
-                      ],
-                            ),
+      ],
+    ),
+
              ),
 
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
-        title: Text("Food App" , style: TextStyle(color: Colors.white , fontSize: 25 , fontWeight: FontWeight.bold), ) ,
+        title: Text(" ${widget.name.isEmpty ? "Tarabezza" : 'Hello, ${widget.name}' }"  , style: TextStyle(color: Colors.white , fontSize: 25 , fontWeight: FontWeight.bold), ) ,
         centerTitle: false,
         // make all the appbar icons white
         iconTheme: IconThemeData(
