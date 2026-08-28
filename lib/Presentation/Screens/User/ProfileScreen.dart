@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iti_flutter/Core/AppColors/maincolors.dart';
 import 'package:iti_flutter/Core/Images/images_path.dart';
-import 'package:iti_flutter/Presentation/Screens/LoginScreen.dart';
+import 'package:iti_flutter/Presentation/Screens/Authentication/LoginScreen.dart';
 import 'package:lite_rolling_switch/lite_rolling_switch.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';

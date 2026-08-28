@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:iti_flutter/Data/Requests/Popular_Chefs_Request.dart';
-import 'package:iti_flutter/Presentation/Screens/HomeScreen.dart';
-import 'package:iti_flutter/Presentation/Screens/RegisterScreen.dart';
+import 'package:iti_flutter/Presentation/Screens/Authentication/RegisterScreen.dart';
+import 'package:iti_flutter/Presentation/Screens/Home/HomeScreen.dart';
 import 'package:iti_flutter/Presentation/Widgets/LoginCards.dart';
 
 // current state makes you go to form state that has the methods (validate()

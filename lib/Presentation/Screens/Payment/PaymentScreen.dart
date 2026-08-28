@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:iti_flutter/Presentation/Screens/paymentDone.dart';
+import 'package:iti_flutter/Presentation/Screens/Payment/paymentDone.dart';
 
 class Paymentscreen extends StatelessWidget {
   @override

@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:iti_flutter/Presentation/Screens/LoginScreen.dart';
+import 'package:iti_flutter/Presentation/Screens/Authentication/LoginScreen.dart';
+
 
 // RegExp checks that the input contains only numbers from 0 to 9,
 // so letters, spaces, and symbols are not allowed.

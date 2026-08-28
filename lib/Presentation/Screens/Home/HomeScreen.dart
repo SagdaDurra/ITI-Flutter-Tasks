@@ -3,14 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iti_flutter/Core/Images/images_path.dart';
 import 'package:iti_flutter/Data/Requests/Popular_Chefs_Request.dart';
 import 'package:iti_flutter/Presentation/Cubits/popular_chefs_cubit.dart';
-import 'package:iti_flutter/Presentation/Screens/MenuScreen_Carousel.dart';
-import 'package:iti_flutter/Presentation/Screens/OrderProgress.dart';
-import 'package:iti_flutter/Presentation/Screens/PaymentScreen.dart';
-import 'package:iti_flutter/Presentation/Screens/Popular_Chefs_Screen.dart';
-import 'package:iti_flutter/Presentation/Screens/ProfileScreen.dart';
+import 'package:iti_flutter/Presentation/Screens/Client/MenuScreen_Carousel.dart';
+import 'package:iti_flutter/Presentation/Screens/Client/Popular_Chefs_Screen.dart';
+import 'package:iti_flutter/Presentation/Screens/Nav%20Bar/Bottomnavbar.dart';
+import 'package:iti_flutter/Presentation/Screens/Payment/PaymentScreen.dart';
+import 'package:iti_flutter/Presentation/Screens/User/OrderProgress.dart';
+import 'package:iti_flutter/Presentation/Screens/User/ProfileScreen.dart';
 import 'package:iti_flutter/Presentation/Widgets/HomeCards.dart';
 import 'package:sidebarx/sidebarx.dart';
-import 'package:iti_flutter/Presentation/Screens/Bottomnavbar.dart';
 import 'package:share_plus/share_plus.dart';
 
 

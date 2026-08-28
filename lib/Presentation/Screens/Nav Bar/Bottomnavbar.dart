@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:iti_flutter/Presentation/Screens/HomeScreen.dart';
-import 'package:iti_flutter/Presentation/Screens/OrderProgress.dart';
-import 'package:iti_flutter/Presentation/Screens/PaymentScreen.dart';
-import 'package:iti_flutter/Presentation/Screens/ProfileScreen.dart';
+import 'package:iti_flutter/Presentation/Screens/Home/HomeScreen.dart';
+import 'package:iti_flutter/Presentation/Screens/Payment/PaymentScreen.dart';
+import 'package:iti_flutter/Presentation/Screens/User/OrderProgress.dart';
+import 'package:iti_flutter/Presentation/Screens/User/ProfileScreen.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 // Must be in screen alone
 class BottomNavBar extends StatefulWidget{
