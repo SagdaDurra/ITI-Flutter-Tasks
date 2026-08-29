@@ -113,34 +113,34 @@ class _MyHomePageState extends State<MyHomePage> {
                                        ),
                                      );
                                    },),
-                                 SidebarXItem(icon: Icons.navigation_sharp,
-                                   label: 'Bottom Bar',
-                                  // onTap: () async {
-                                  //   if (BottombarIsOpen) {
-                                  //     Navigator.pop(context);
-                                  //     BottombarIsOpen = false;
-                                  //   } else {
-                                  //     BottombarIsOpen = true;
-                                  //     await Navigator.push(
-                                  //       context,
-                                  //       MaterialPageRoute(
-                                  //         builder: (context) => BottomNavBar(),
-                                  //       ),
-                                  //     );
-                                  //     BottombarIsOpen = false;
-                                  //   }
-                                  // },
-                                     // dont click it more than one time
-                                     // i want to know the reason of this problem?????
-                                   onTap: (){
-                                     Navigator.push(
-                                       context,
-                                       MaterialPageRoute(
-                                         builder: (context) => BottomNavBar(),
-                                       ),
-                                     );
-                                   }
-                                     ),
+                                 //SidebarXItem(icon: Icons.navigation_sharp,
+                                 //  label: 'Bottom Bar',
+                                 // // onTap: () async {
+                                 // //   if (BottombarIsOpen) {
+                                 // //     Navigator.pop(context);
+                                 // //     BottombarIsOpen = false;
+                                 // //   } else {
+                                 // //     BottombarIsOpen = true;
+                                 // //     await Navigator.push(
+                                 // //       context,
+                                 // //       MaterialPageRoute(
+                                 // //         builder: (context) => BottomNavBar(),
+                                 // //       ),
+                                 // //     );
+                                 // //     BottombarIsOpen = false;
+                                 // //   }
+                                 // // },
+                                 //    // dont click it more than one time
+                                 //    // i want to know the reason of this problem?????
+                                 //  onTap: (){
+                                 //    Navigator.push(
+                                 //      context,
+                                 //      MaterialPageRoute(
+                                 //        builder: (context) => BottomNavBar(),
+                                 //      ),
+                                 //    );
+                                 //  }
+                                 //    ),
                                  SidebarXItem(icon: Icons.bookmark, label: 'Popular Chefs',
                                    onTap: () {
                                      Navigator.push(

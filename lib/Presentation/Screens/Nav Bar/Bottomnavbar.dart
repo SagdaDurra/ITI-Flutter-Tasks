@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:iti_flutter/Presentation/Chatbot/GeminiChatBotScreen.dart';
+import 'package:iti_flutter/Presentation/Screens/Client/PopularChefsDetails.dart';
 import 'package:iti_flutter/Presentation/Screens/Home/HomeScreen.dart';
 import 'package:iti_flutter/Presentation/Screens/Payment/PaymentScreen.dart';
 import 'package:iti_flutter/Presentation/Screens/User/OrderProgress.dart';
@@ -19,10 +21,12 @@ class _BottomNavBarState extends State<BottomNavBar> {
 
   List<Widget> _buildScreens() {
     return [
-      MyHomePage(title: '',),
-      Paymentscreen(),
-      Profilescreen(),
-      orderprogress(),
+      Popularchefsdetails(id : 1),
+      Geminichatbotscreen(),
+      //MyHomePage(title: '',),
+      //Paymentscreen(),
+      //Profilescreen(),
+      //orderprogress(),
     ];
   }
 
@@ -30,31 +34,33 @@ class _BottomNavBarState extends State<BottomNavBar> {
     return [
       PersistentBottomNavBarItem(
         icon: const Icon(Icons.home),
-        title: "Home",
+        title: "Biography",
         activeColorPrimary: Colors.deepPurple,
         inactiveColorPrimary: Colors.grey,
       ),
 
       PersistentBottomNavBarItem(
         icon: const Icon(Icons.payment),
-        title: "Payment",
+        title: "ChatBot",
         activeColorPrimary: Colors.deepPurple,
         inactiveColorPrimary: Colors.grey,
       ),
 
-      PersistentBottomNavBarItem(
-        icon: const Icon(Icons.person),
-        title: "Profile",
-        activeColorPrimary: Colors.deepPurple,
-        inactiveColorPrimary: Colors.grey,
-      ),
+     // PersistentBottomNavBarItem(
+     //   icon: const Icon(Icons.person),
+     //   title: "Profile",
+     //   activeColorPrimary: Colors.deepPurple,
+     //   inactiveColorPrimary: Colors.grey,
+     // ),
+//
+     // PersistentBottomNavBarItem(
+     //   icon: const Icon(Icons.motorcycle_rounded),
+     //   title: "Order Progress",
+     //   activeColorPrimary: Colors.deepPurple,
+     //   inactiveColorPrimary: Colors.grey,
+     // ),
 
-      PersistentBottomNavBarItem(
-        icon: const Icon(Icons.motorcycle_rounded),
-        title: "Order Progress",
-        activeColorPrimary: Colors.deepPurple,
-        inactiveColorPrimary: Colors.grey,
-      ),
+
 
     ];
   }
