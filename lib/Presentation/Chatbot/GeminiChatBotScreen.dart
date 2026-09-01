@@ -13,20 +13,59 @@ class Geminichatbotscreen extends StatefulWidget {
 class _GeminichatbotscreenState extends State<Geminichatbotscreen> {
 
   final ApiKey = dotenv.env['GEMINI_API_KEY'] ?? "";
-  late final model = GenerativeModel(model: "gemini-2.5-flash", apiKey: ApiKey );
+  bool isLoading = false;
+  @override
+  void initState() {
+    super.initState();
+    print("API KEY EMPTY: ${ApiKey.isEmpty}");
+  }
+  late final model = GenerativeModel(model: "gemini-3.6-flash", apiKey: ApiKey );
+  //late final Chat chat = model.startChat();
   final List<MessageModel> messages = [];
+
   final TextEditingController Textcontroller = TextEditingController();
-  Future<void> sendMessage(String message) async {
-    final message = Textcontroller.text;
+  Future<void> sendMessage() async {
+    final message = Textcontroller.text.trim();
+    if (message.isEmpty || isLoading) return;
+    Textcontroller.clear();
+  // messages.add(
+  //   MessageModel(
+  //     isUser: true,
+  //     message: message,
+  //     date: DateTime.now(),
+  //   ),
+  // );
+  //);
 
     setState(() {
+      isLoading = true;
       messages.add(MessageModel(isUser: true, message: message, date: DateTime.now()));
     });
     final content =[Content.text(message)];
-    final request = await model.generateContent(content);
-    setState(() {
-      messages.add(MessageModel(isUser: false, message: request.text ?? "", date: DateTime.now()));
-    });
+    try {
+      // to make the chatbot knowing the context we are talking at
+      // explaining ???
+      final conversation = messages.map((m) {
+        return "${m.isUser ? 'User' : 'Gemini'}: ${m.message}";
+      }).join("\n");
+
+      final content = [
+        Content.text(
+            "Here is our conversation so far:\n\n"
+                "$conversation\n\n"
+                "Reply naturally to the user's latest message."
+        ),
+      ];
+      final request = await model.generateContent(content);
+      //Content.text(message);
+      setState(() {
+        messages.add(MessageModel(
+            isUser: false, message: request.text ?? "", date: DateTime.now()));
+        isLoading = false;
+      });
+    } catch (e) {
+      print("Error: $e");
+    }
 
   }
 
@@ -34,7 +73,7 @@ class _GeminichatbotscreenState extends State<Geminichatbotscreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Chatbot"),
+        title: Text("Chatbot" , style: TextStyle(color: Colors.black , fontSize: 40 , fontWeight: FontWeight.bold), ),
       ),
       body: Column(
         children: [
@@ -45,6 +84,11 @@ class _GeminichatbotscreenState extends State<Geminichatbotscreen> {
           itemCount: messages.length,
           ),
           ),
+          if (isLoading)
+            Padding(
+              padding: EdgeInsets.only(bottom: 10),
+              child: CircularProgressIndicator(),
+            ),
           Padding(padding: EdgeInsets.all(25) ,
             child: Row(
               children: [
@@ -65,9 +109,9 @@ class _GeminichatbotscreenState extends State<Geminichatbotscreen> {
                 ),
                 SizedBox(),
                 GestureDetector(
-                  onTap: (){
-                    sendMessage(Textcontroller.text);
-                    Textcontroller.clear();
+                  onTap: () async{
+                   await sendMessage();
+                    //Textcontroller.clear();
                   },
                   child: CircleAvatar(
                     radius: 25,

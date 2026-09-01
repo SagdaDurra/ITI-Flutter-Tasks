@@ -35,7 +35,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
   List<PersistentBottomNavBarItem> _navBarsItems() {
     return [
       PersistentBottomNavBarItem(
-        icon: const Icon(Icons.home),
+        icon: const Icon(Icons.article),
         title: "Biography",
         activeColorPrimary: Colors.deepPurple,
         inactiveColorPrimary: Colors.grey,

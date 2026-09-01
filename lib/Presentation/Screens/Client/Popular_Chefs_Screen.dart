@@ -5,13 +5,17 @@ import 'package:iti_flutter/Domain/Models/Popular_Chefs_Model.dart';
 import 'package:iti_flutter/Presentation/Cubits/popular_chefs_cubit.dart';
 import 'package:iti_flutter/Presentation/Screens/Client/PopularChefsDetails.dart';
 import 'package:iti_flutter/Presentation/Screens/Nav%20Bar/Bottomnavbar.dart';
+import 'package:iti_flutter/Presentation/Screens/User/Favourite-Chefs-Screen.dart';
 
 class Popular_Chefs_Model extends StatefulWidget{
+  //why??
+  //bool fill = false ;
   @override
   State<Popular_Chefs_Model> createState() => _Popular_Chefs_ModelState();
 }
 
 class _Popular_Chefs_ModelState extends State<Popular_Chefs_Model> {
+  bool fill = false ;
   PopularChefsModel? popularChefsModel ;
 
   // we use it before using cubit
@@ -66,29 +70,42 @@ class _Popular_Chefs_ModelState extends State<Popular_Chefs_Model> {
                              borderRadius: BorderRadius.circular(20),
                            ),
                            margin: EdgeInsets.all(10),
-                       child: Column(
-                         mainAxisAlignment: MainAxisAlignment.center,
-                         crossAxisAlignment: CrossAxisAlignment.start,
+                       child: Row(
                          children: [
-                           Row(
+                           IconButton(onPressed: (){
+                             fill = true ;
+                             //Navigator.push(context, MaterialPageRoute(builder: (context) => FavoutriteChefsScreen()));
+                           } , icon: fill
+                               ? Icon(Icons.favorite, color: Colors.deepPurple, size: 30)
+                               : Icon(Icons.favorite_border, color: Colors.deepPurple, size: 30), ),
+                           Column(
+                             mainAxisAlignment: MainAxisAlignment.center,
+                             crossAxisAlignment: CrossAxisAlignment.start,
                              children: [
-                               Text("Name : ", style : TextStyle(color: Colors.deepPurple , fontSize: 20 , fontWeight: FontWeight.bold), ),
-                               Text(state.popularChefsModel.results?[index].name.toString()  ?? "N/A" , style : TextStyle(color: Colors.black , fontSize: 15 , fontWeight: FontWeight.bold), ),
-                             ],
-                           ) ,
-                           Row(
-                             children: [
-                               Text("Popularity : ", style : TextStyle(color: Colors.deepPurple , fontSize: 20 , fontWeight: FontWeight.bold), ),
-                               Text(state.popularChefsModel.results?[index].popularity.toString()  ?? "N/A" , style : TextStyle(color: Colors.black , fontSize: 15 , fontWeight: FontWeight.bold), ),
-                             ],
-                           ) ,
-                           Row(
-                             children: [
-                               Text("Adult : ", style : TextStyle(color: Colors.deepPurple , fontSize: 20 , fontWeight: FontWeight.bold), ),
-                               Text(state.popularChefsModel.results?[index].adult.toString()  ?? "N/A" , style : TextStyle(color: Colors.black , fontSize: 15 , fontWeight: FontWeight.bold), ),
-                             ],
-                           ) ,
+                               Row(
+                                 children: [
+                                   Text("Name : ", style : TextStyle(color: Colors.deepPurple , fontSize: 20 , fontWeight: FontWeight.bold), ),
+                                   Text(state.popularChefsModel.results?[index].name.toString()  ?? "N/A" , style : TextStyle(color: Colors.black , fontSize: 15 , fontWeight: FontWeight.bold), ),
+                                 ],
+                               ) ,
+                                   Row(
+                                     children: [
+                                       Text("Popularity : ", style : TextStyle(color: Colors.deepPurple , fontSize: 20 , fontWeight: FontWeight.bold), ),
+                                       Text(state.popularChefsModel.results?[index].popularity.toString()  ?? "N/A" , style : TextStyle(color: Colors.black , fontSize: 15 , fontWeight: FontWeight.bold), ),
 
+                                     ],
+                                   ),
+                                 ],
+                               Row(
+                                 children: [
+                                   Text("Adult : ", style : TextStyle(color: Colors.deepPurple , fontSize: 20 , fontWeight: FontWeight.bold), ),
+                                   Text(state.popularChefsModel.results?[index].adult.toString()  ?? "N/A" , style : TextStyle(color: Colors.black , fontSize: 15 , fontWeight: FontWeight.bold), ),
+                                 ],
+                               ) ,
+
+                             ],
+
+                           ),
                          ],
                        ),
                          ),

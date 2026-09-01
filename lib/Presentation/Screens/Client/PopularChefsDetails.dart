@@ -39,7 +39,16 @@ class _PopularchefsdetailsState extends State<Popularchefsdetails> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Chef Biography' , style: TextStyle(color: Colors.black , fontSize: 40 , fontWeight: FontWeight.bold), ),
+        title: Row(
+          children: [
+            IconButton(icon: Icon(Icons.arrow_back , color: Colors.black , size: 30,  ) , onPressed: () {
+              // explaining ??
+              // AND explaining why navigator.pop(context) doesnt work??
+              Navigator.of(context, rootNavigator: true).pop();
+            },),
+            Text('Chef Biography' , style: TextStyle(color: Colors.black , fontSize: 40 , fontWeight: FontWeight.bold), ),
+          ],
+        ),
       ),
 
       body:
@@ -49,14 +58,15 @@ class _PopularchefsdetailsState extends State<Popularchefsdetails> {
       )
           : Container(
         margin: EdgeInsets.all(10),
-        width: 500,
-        height: 500,
+        // to make it more flexible with the bio
+        width: double.infinity,
+        padding: EdgeInsets.all(15),
         decoration: BoxDecoration(
           color: Colors.deepPurple[200],
           borderRadius: BorderRadius.circular(10),
         ),
         child:Text(
-          details!.biography ?? "N/A",
+          details!.biography ?? "N/A", style: TextStyle(color: Colors.black , fontSize: 20 , fontWeight: FontWeight.bold),
         ),
 
       ),
