@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iti_flutter/Domain/Models/Popular_Chefs_Model.dart';
 import 'package:iti_flutter/Presentation/Cubits/popular_chefs_cubit.dart';
 import 'package:iti_flutter/Presentation/Screens/Client/PopularChefsDetails.dart';
+import 'package:iti_flutter/Presentation/Screens/Nav%20Bar/Bottomnavbar.dart';
 
 class Popular_Chefs_Model extends StatefulWidget{
   @override
@@ -53,7 +54,9 @@ class _Popular_Chefs_ModelState extends State<Popular_Chefs_Model> {
                  elevation: 2,
                    child: InkWell(
                      onTap: (){
-                       Navigator.push(context, MaterialPageRoute(builder: (context) => Popularchefsdetails( id: state.popularChefsModel.results![index].id!,)));
+                       final ChefId = state.popularChefsModel.results![index].id!;
+                       Navigator.push(context, MaterialPageRoute(builder: (context) => BottomNavBar( id: ChefId)));
+                       //Navigator.push(context, MaterialPageRoute(builder: (context) => Popularchefsdetails( id: state.popularChefsModel.results![index].id!,)));
                      },
                      child: Container(
                            height: 150,

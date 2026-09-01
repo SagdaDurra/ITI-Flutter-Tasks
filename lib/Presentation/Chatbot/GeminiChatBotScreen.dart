@@ -12,7 +12,7 @@ class Geminichatbotscreen extends StatefulWidget {
 
 class _GeminichatbotscreenState extends State<Geminichatbotscreen> {
 
-  final ApiKey = dotenv.env['GEMINI_API_KEY']!;
+  final ApiKey = dotenv.env['GEMINI_API_KEY'] ?? "";
   late final model = GenerativeModel(model: "gemini-2.5-flash", apiKey: ApiKey );
   final List<MessageModel> messages = [];
   final TextEditingController Textcontroller = TextEditingController();
@@ -103,7 +103,7 @@ Container userPrompt ({required final bool isUser , required final String messag
         Text(
           message,
           style: TextStyle(
-            fontSize: 17,
+            fontSize: 20,
             fontWeight: isUser ? FontWeight.bold : FontWeight.normal,
             color: isUser ? Colors.white : Colors.black,
           ),

@@ -9,19 +9,21 @@ import 'package:iti_flutter/Presentation/Screens/User/ProfileScreen.dart';
 import 'package:persistent_bottom_nav_bar/persistent_bottom_nav_bar.dart';
 // Must be in screen alone
 class BottomNavBar extends StatefulWidget{
-  const BottomNavBar({super.key});
+  final num id ;
+  const BottomNavBar({super.key , required this.id});
   @override
   State<BottomNavBar> createState() => _BottomNavBarState();
 }
 
 class _BottomNavBarState extends State<BottomNavBar> {
+
   @override
   final PersistentTabController _controller =
   PersistentTabController(initialIndex: 0);
 
   List<Widget> _buildScreens() {
     return [
-      Popularchefsdetails(id : 1),
+      Popularchefsdetails(id : widget.id),
       Geminichatbotscreen(),
       //MyHomePage(title: '',),
       //Paymentscreen(),
@@ -40,7 +42,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
       ),
 
       PersistentBottomNavBarItem(
-        icon: const Icon(Icons.payment),
+        icon: const Icon(Icons.chat),
         title: "ChatBot",
         activeColorPrimary: Colors.deepPurple,
         inactiveColorPrimary: Colors.grey,
