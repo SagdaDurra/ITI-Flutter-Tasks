@@ -125,14 +125,12 @@ class _PopularchefsdetailsState extends State<Popularchefsdetails> {
                   child: images!.profiles == null ||
                       images!.profiles!.isEmpty
                       ? Text("No image")
-                   :InstaImageViewer(
-                    child: Image(
-                    image:   Image.network(
-                    'https://image.tmdb.org/t/p/w500${images!.profiles![0].filePath}',
-                    fit: BoxFit.cover,
-                  ).image,
-                    )
-      ),
+                      : InstaImageViewer(
+                    child: Image.network(
+                      'https://image.tmdb.org/t/p/w500${images!.profiles![0].filePath}',
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
                 SizedBox(height: 10),
 
