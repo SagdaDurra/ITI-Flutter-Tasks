@@ -2,21 +2,28 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:iti_flutter/Domain/Models/Popular_Chefs_Model.dart';
+import 'package:iti_flutter/Presentation/Cubits/favourite_chefs_cubit.dart';
 import 'package:iti_flutter/Presentation/Cubits/popular_chefs_cubit.dart';
-import 'package:iti_flutter/Presentation/Screens/Client/PopularChefsDetails.dart';
 import 'package:iti_flutter/Presentation/Screens/Nav%20Bar/Bottomnavbar.dart';
-import 'package:iti_flutter/Presentation/Screens/User/Favourite-Chefs-Screen.dart';
+import 'package:iti_flutter/Presentation/Screens/User/Favourite_Chefs_Screen.dart';
 
 class Popular_Chefs_Model extends StatefulWidget{
   //why??
   //bool fill = false ;
+  //FavoutriteChefsScreen(favoriteChefs) {
+  //  // TODO: implement FavoutriteChefsScreen
+  //  throw UnimplementedError();
+  //}
   @override
   State<Popular_Chefs_Model> createState() => _Popular_Chefs_ModelState();
 }
 
 class _Popular_Chefs_ModelState extends State<Popular_Chefs_Model> {
-  bool fill = false ;
+  // for making the all cards favourite
+//  bool fill = false ;
+  //Set<num> favoriteChefs = {};
   PopularChefsModel? popularChefsModel ;
+
 
   // we use it before using cubit
  // Future<void> getChefs() async {
@@ -71,47 +78,128 @@ class _Popular_Chefs_ModelState extends State<Popular_Chefs_Model> {
                            ),
                            margin: EdgeInsets.all(10),
                        child: Row(
+                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                          children: [
-                           IconButton(onPressed: (){
-                             fill = true ;
-                             //Navigator.push(context, MaterialPageRoute(builder: (context) => FavoutriteChefsScreen()));
-                           } , icon: fill
-                               ? Icon(Icons.favorite, color: Colors.deepPurple, size: 30)
-                               : Icon(Icons.favorite_border, color: Colors.deepPurple, size: 30), ),
+
                            Column(
                              mainAxisAlignment: MainAxisAlignment.center,
                              crossAxisAlignment: CrossAxisAlignment.start,
                              children: [
                                Row(
                                  children: [
-                                   Text("Name : ", style : TextStyle(color: Colors.deepPurple , fontSize: 20 , fontWeight: FontWeight.bold), ),
-                                   Text(state.popularChefsModel.results?[index].name.toString()  ?? "N/A" , style : TextStyle(color: Colors.black , fontSize: 15 , fontWeight: FontWeight.bold), ),
-                                 ],
-                               ) ,
-                                   Row(
-                                     children: [
-                                       Text("Popularity : ", style : TextStyle(color: Colors.deepPurple , fontSize: 20 , fontWeight: FontWeight.bold), ),
-                                       Text(state.popularChefsModel.results?[index].popularity.toString()  ?? "N/A" , style : TextStyle(color: Colors.black , fontSize: 15 , fontWeight: FontWeight.bold), ),
-
-                                     ],
+                                   Text(
+                                     "Name : ",
+                                     style: TextStyle(
+                                       color: Colors.deepPurple,
+                                       fontSize: 20,
+                                       fontWeight: FontWeight.bold,
+                                     ),
+                                   ),
+                                   Text(
+                                     state.popularChefsModel.results?[index].name.toString() ??
+                                         "N/A",
+                                     style: TextStyle(
+                                       color: Colors.black,
+                                       fontSize: 15,
+                                       fontWeight: FontWeight.bold,
+                                     ),
                                    ),
                                  ],
+                               ),
+
                                Row(
                                  children: [
-                                   Text("Adult : ", style : TextStyle(color: Colors.deepPurple , fontSize: 20 , fontWeight: FontWeight.bold), ),
-                                   Text(state.popularChefsModel.results?[index].adult.toString()  ?? "N/A" , style : TextStyle(color: Colors.black , fontSize: 15 , fontWeight: FontWeight.bold), ),
+                                   Text(
+                                     "Popularity : ",
+                                     style: TextStyle(
+                                       color: Colors.deepPurple,
+                                       fontSize: 20,
+                                       fontWeight: FontWeight.bold,
+                                     ),
+                                   ),
+                                   Text(
+                                     state.popularChefsModel.results?[index].popularity.toString() ??
+                                         "N/A",
+                                     style: TextStyle(
+                                       color: Colors.black,
+                                       fontSize: 15,
+                                       fontWeight: FontWeight.bold,
+                                     ),
+                                   ),
                                  ],
-                               ) ,
+                               ),
 
+                               Row(
+                                 children: [
+                                   Text(
+                                     "Adult : ",
+                                     style: TextStyle(
+                                       color: Colors.deepPurple,
+                                       fontSize: 20,
+                                       fontWeight: FontWeight.bold,
+                                     ),
+                                   ),
+                                   Text(
+                                     state.popularChefsModel.results?[index].adult.toString() ??
+                                         "N/A",
+                                     style: TextStyle(
+                                       color: Colors.black,
+                                       fontSize: 15,
+                                       fontWeight: FontWeight.bold,
+                                     ),
+                                   ),
+                                 ],
+                               ),
                              ],
-
                            ),
+                           
+                           BlocBuilder<FavoriteChefsCubit, Set<num>>(
+  builder: (context, favoriteIDS) {
+    return IconButton(
+                             onPressed: () {
+                               //setState(() {
+                                //final chefId =
+                                //state.popularChefsModel.results![index].id!;
+
+                                //context
+                                //    .read<FavoriteChefsCubit>()
+                                //    .toggleFavorite(chefId);
+
+                                //final ChefId = state.popularChefsModel.results![index].id!;
+                                //if (favoriteChefs.contains(ChefId)) {
+                                //  favoriteChefs.remove(ChefId);
+                                //} else {
+                                //  favoriteChefs.add(ChefId);
+                                //}
+                                 //fill = true;
+                              // });
+                               final chefId =
+                               state.popularChefsModel.results![index].id!;
+
+                               context
+                                   .read<FavoriteChefsCubit>()
+                                   .toggleFavorite(chefId);
+                             },
+                             icon:favoriteIDS.contains(state.popularChefsModel.results![index].id!)
+                             //fill
+                                 ? Icon(
+                               Icons.favorite,
+                               color: Colors.deepPurple,
+                               size: 30,
+                             )
+                                 : Icon(
+                               Icons.favorite_border,
+                               color: Colors.deepPurple,
+                               size: 30,
+                             ),
+                           );
+  },
+),
                          ],
                        ),
-                         ),
                    ),
-               );
-
+               )
+             );
            },
            separatorBuilder:(context , index){
              return SizedBox(height: 10);

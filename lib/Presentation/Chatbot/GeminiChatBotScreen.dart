@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
-import 'package:iti_flutter/Domain/Models/Message-Model.dart';
+import 'package:iti_flutter/Domain/Models/Message_Model.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 

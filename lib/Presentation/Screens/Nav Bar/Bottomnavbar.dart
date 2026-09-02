@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:iti_flutter/Presentation/Chatbot/GeminiChatBotScreen.dart';
-import 'package:iti_flutter/Presentation/Screens/Client/PopularChefsDetails.dart';
+import 'package:iti_flutter/Presentation/Screens/Client/Popular_Chefs_Details.dart';
 import 'package:iti_flutter/Presentation/Screens/Home/HomeScreen.dart';
 import 'package:iti_flutter/Presentation/Screens/Payment/PaymentScreen.dart';
 import 'package:iti_flutter/Presentation/Screens/User/OrderProgress.dart';

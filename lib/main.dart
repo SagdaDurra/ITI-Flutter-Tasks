@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:iti_flutter/Presentation/Cubits/favourite_chefs_cubit.dart';
+import 'package:iti_flutter/Presentation/Cubits/popular_chefs_cubit.dart';
 import 'package:iti_flutter/Presentation/Screens/Authentication/LoginScreen.dart';
 import 'package:iti_flutter/Presentation/Screens/Home/HomeScreen.dart';
 import 'package:iti_flutter/Presentation/Screens/Splash%20Screen/SplashScreen.dart';
@@ -7,7 +10,19 @@ import 'package:flutter_dotenv/flutter_dotenv.dart';
 Future<void> main() async {
   await dotenv.load(fileName: ".env");
 
-  runApp(const MyApp());
+  runApp(
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => FavoriteChefsCubit(),
+        ),
+        BlocProvider(
+          create: (context) => PopularChefsCubit(),
+        ),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {

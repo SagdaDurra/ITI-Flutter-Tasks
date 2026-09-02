@@ -3,7 +3,7 @@ import 'dart:developer';
 
 import 'package:http/http.dart' as http;
 import 'package:iti_flutter/Core/AppAPIs/AllAPIs.dart';
-import 'package:iti_flutter/Domain/Models/Popular-Chefs-Details-Model.dart';
+import 'package:iti_flutter/Domain/Models/Popular_Chefs_Details_Model.dart';
 
 class Popularchefsdetailsrequest {
   // this id is not for details model its for the popular chefs model and we pass

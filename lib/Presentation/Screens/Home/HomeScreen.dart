@@ -7,6 +7,7 @@ import 'package:iti_flutter/Presentation/Screens/Client/MenuScreen_Carousel.dart
 import 'package:iti_flutter/Presentation/Screens/Client/Popular_Chefs_Screen.dart';
 import 'package:iti_flutter/Presentation/Screens/Nav%20Bar/Bottomnavbar.dart';
 import 'package:iti_flutter/Presentation/Screens/Payment/PaymentScreen.dart';
+import 'package:iti_flutter/Presentation/Screens/User/Favourite_Chefs_Screen.dart';
 import 'package:iti_flutter/Presentation/Screens/User/OrderProgress.dart';
 import 'package:iti_flutter/Presentation/Screens/User/ProfileScreen.dart';
 import 'package:iti_flutter/Presentation/Widgets/HomeCards.dart';
@@ -147,14 +148,21 @@ class _MyHomePageState extends State<MyHomePage> {
                                        context,
                                        MaterialPageRoute(
                                          //builder: (context) => Popular_Chefs_Model(), before blocprovider
-                                         builder: (context) => BlocProvider(
-                                         create: (context) => PopularChefsCubit(),
-                                         child: Popular_Chefs_Model(),
-                                       ),
+                                         builder: (context) => Popular_Chefs_Model(),
                                        ),
                                      );
                                    },
                                  ),
+                                 SidebarXItem(icon: Icons.favorite_border,
+                                   label: 'Favourite Chefs',
+                                   onTap: () {
+                                     Navigator.push(
+                                       context,
+                                       MaterialPageRoute(
+                                         builder: (context) => FavoutriteChefsScreen(),
+                                       ),
+                                     );
+                                   },),
                                ],
                              ),
                            ),
