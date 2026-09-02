@@ -95,6 +95,7 @@ class _GeminichatbotscreenState extends State<Geminichatbotscreen> {
                 Expanded(
                   child: Center(
                     child: TextField(
+                      keyboardType: TextInputType.text,
                       controller: Textcontroller,
                       style: TextStyle(color: Colors.black , fontSize: 17),
                       decoration: InputDecoration(

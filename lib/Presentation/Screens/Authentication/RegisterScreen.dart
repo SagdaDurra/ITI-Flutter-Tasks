@@ -144,7 +144,7 @@ class _RegisterscreenState extends State<Registerscreen> {
                       return "Email is required";
                     }
                     else if(!input!.contains("@"))
-                      return null;
+                      return "Invalid Email";
                   },
                   decoration: InputDecoration(
                     hintText: 'Examplename@example',
@@ -172,7 +172,7 @@ class _RegisterscreenState extends State<Registerscreen> {
                       return "Password is required";
                     }
                     else if(input!.length<8)
-                      return null;
+                      return "Password must be at least 8 characters";
                   },
                   obscureText: !issVisible,
                   decoration: InputDecoration(
