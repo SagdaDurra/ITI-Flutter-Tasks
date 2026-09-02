@@ -41,7 +41,7 @@ class _SplashScreenState extends State<SplashScreen> {
       backgroundColor: Colors.deepPurple,
       body: Center(
         child: Text(
-          "Trabezza",
+          "Tarabezza",
           style: TextStyle(
             color: Colors.white,
             fontSize: 40,
